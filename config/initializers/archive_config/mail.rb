@@ -2,7 +2,8 @@
 module Otwarchive
   class Application < Rails::Application
     unless %w(test cucumber).include?(Rails.env)
-      config.action_mailer.delivery_method = :smtp
+      config.action_mailer.delivery_method = :postmark
+      config.action_mailer.postmark_settings = { :api_token => Rails.application.secrets.postmark_api_token }
   #    config.action_mailer.default_url_options = {host: ArchiveConfig.APP_URL.gsub(/http:\/\//, '')}
       ActionMailer::Base.default_url_options = {host: ArchiveConfig.APP_URL.gsub(/http:\/\//, '')}
   ## TODO: Setting ActionMailer::Base.default_url_options directly is now deprecated, use the configuration option mentioned above to set the default host.

@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 ruby '2.6.5'
 
+### Larpfic Add
+gem 'postmark-rails'
+### End Larpfic Add 
+
 gem 'test-unit', '~> 3.2'
 
 gem 'bundler'

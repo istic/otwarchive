@@ -25,7 +25,7 @@ Otwarchive::Application.configure do
 
   # See everything in the log (default is now :debug)
   # config.log_level = :debug
-  config.log_level = :info
+  config.log_level = :debug
 
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
@@ -42,7 +42,10 @@ Otwarchive::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Disable delivery errors, bad email addresses will be ignored
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :postmark
+  #config.action_mailer.postmark_settings = { :api_token => Rails.application.keys.postmark_api_token }
+  config.action_mailer.postmark_settings = { :api_token => YAML.load_file("#{Rails.root}/config/local.yml")['POSTMARK_API_KEY'] }
 
   # Enable threaded mode
   # config.threadsafe!

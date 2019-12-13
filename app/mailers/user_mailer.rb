@@ -17,7 +17,7 @@ class UserMailer < BulletproofMailer::Base
   helper :series
   include HtmlCleaner
 
-  default from: "Archive of Our Own " + "<#{ArchiveConfig.RETURN_ADDRESS}>"
+  default from: "Larp Fic " + "<#{ArchiveConfig.RETURN_ADDRESS}>"
 
   # Send an email letting authors know their work has been added to a collection
   def added_to_collection_notification(user_id, work_id, collection_id)
