@@ -1,6 +1,10 @@
-# Contributing to Archive of Our Own
+# Contributing to LarpFic
 
-## Contributing code
+## Contributing code to AO3
+
+LarpFic is a fork of LarpFic. If the issue is in AO3, you need to fix it there. AO3's contribution guidelines are at https://github.com/otwcode/otwarchive/
+
+
 
 ### Report a bug
 
@@ -40,7 +44,7 @@ ability to benefit from your changes.
 
 ### Release
 
-Once we have checked that all is well, your contribution will be deployed to [Archive of Our Own](https://archiveofourown.org) and you will be credited
+Once we have checked that all is well, your contribution will be deployed to [LarpFic](https://archiveofourown.org) and you will be credited
 in the [AO3 Release Notes](https://archiveofourown.org/admin_posts?tag=1)! Make sure you tell us your preferred name and pronoun
 in the pull request.
 

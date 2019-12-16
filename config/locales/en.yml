@@ -158,12 +158,12 @@ en:
               </p>
 
               <p>
-               The Archive of Our Own is a fan-run and fan-supported archive that relies on <a href="%{donate_url}" style="color:#ffffff; text-decoration:underline">your donations</a>.
+               LarpFic is a fan-run and fan-supported archive that relies on <a href="%{donate_url}" style="color:#ffffff; text-decoration:underline">your donations</a>.
               </p>
           text: |-
               If you've received this message in error, please contact Support at %{support_url}.
 
-              The Archive of Our Own is a fan-run and fan-supported archive that relies on your donations: %{donate_url}.
+              LarpFic is a fan-run and fan-supported archive that relies on your donations: %{donate_url}.
         sent_at: "Sent at %{sent_at}."
         sent_by:
           html: "Sent by <b>%{sent_by}</b>."
@@ -185,12 +185,12 @@ en:
     invite_increase_notification:
       subject: "[%{app_name}] New Invitations"
       html:  "<p> Hi %{login}! </p>\n\
-          <p> We just wanted to let you know that you have %{total} new invitation(s), which can be used to create new accounts at the archive. You can invite a friend at %{invitation_page}. </p>\n\
+          <p> We just wanted to let you know that you have %{total} new invitation(s), which can be used to create new accounts at LarpFic. You can invite a friend at %{invitation_page}. </p>\n\
           <p> Cheers, <br> %{archive_name} </p>"
       txt: |-
           Hi %{login}
           We just wanted to let you know that you have %{total} new invitation(s),
-          which can be used to create new accounts at the archive. You can invite a
+          which can be used to create new accounts at LarpFic. You can invite a
           friend at %{invitation_page}.
           Cheers,
           %{archive_name}
@@ -201,13 +201,13 @@ en:
       abuse_committee: "contact our Abuse Committee"
       bye: "Attached is a copy of your work for your reference."
       html:
-        part1: "Your work %{title} was deleted from the Archive by a site admin."
+        part1: "Your work %{title} was deleted from LarpFic by a site admin."
         part2: "If your work was part of an import project managed by our Open Doors team, please %{opendoors_link} with any further questions."
-        part3: "If it's possible your work violated the Archive's Terms of Service, please %{abuse_link}."
+        part3: "If it's possible your work violated LarpFic's Terms of Service, please %{abuse_link}."
       text:
-        part1: "Your work \"%{title}\" was deleted from the Archive by a site admin."
+        part1: "Your work \"%{title}\" was deleted from LarpFic by a site admin."
         part2: "If your work was part of an import project managed by our Open Doors team, please contact Open Doors (%{opendoors_link}) with any further questions."
-        part3: "If it's possible your work violated the Archive's Terms of Service, please contact our Abuse Committee (%{abuse_link})."
+        part3: "If it's possible your work violated LarpFic's Terms of Service, please contact our Abuse Committee (%{abuse_link})."
     delete_work_notification:
       subject: "[%{app_name}] Your work has been deleted"
       support: "contact Support"
@@ -260,36 +260,36 @@ en:
     signup_notification:
       subject: "[%{app_name}] Confirmation"
       faq: "FAQ"
-      admin_posts: "Archive admin posts"
+      admin_posts: "LarpFic admin posts"
       contact_support: "get in touch with our Support team"
       activate_your_account: "activate your account"
-      welcome: "Welcome to the Archive of Our Own, %{login}!"
-      bye: "We hope you enjoy using the Archive."
+      welcome: "Welcome to LarpFic, %{login}!"
+      bye: "We hope you enjoy using LarpFic."
       text:
         part1: "Please activate your account: %{activate_account_url}"
         part2: |-
                   Once your account is up and running, you can post your fanworks, set up email
                   subscriptions to let you know when your favorite creators or works have updated,
                   set preferences to customize the way the site looks and works for you, keep
-                  track of the works you've viewed on the Archive via your history, and much more.
+                  track of the works you've viewed on LarpFic via your history, and much more.
         part3: |-
-                  There's lots of information and advice on how to use the Archive in our FAQ
+                  There's lots of information and advice on how to use LarpFic in our FAQ
                   at %{faq_url}. You'll
-                  find the latest news about site developments in our Archive admin posts at
+                  find the latest news about site developments in our LarpFic admin posts at
                   %{admin_posts_url}. If you need more
                   help, run into a bug, or have questions or comments, please get in touch with
                   our Support team, who are always happy to help out:
                   %{contact_support_url}.
       html:
         part1: "Please %{activate_account_link}."
-        part2: "Once your account is up and running, you can post your fanworks, set up email subscriptions to let you know when your favorite creators or works have updated, set preferences to customize the way the site looks and works for you, keep track of the works you've viewed on the Archive via your history, and much more."
-        part3: "There's lots of information and advice on how to use the Archive in our %{faq_link}. You'll find the latest news about site developments in our %{admin_posts_link}. If you need more help, run into a bug, or have questions or comments, please %{contact_support_link}, who are always happy to help out."
+        part2: "Once your account is up and running, you can post your fanworks, set up email subscriptions to let you know when your favorite creators or works have updated, set preferences to customize the way the site looks and works for you, keep track of the works you've viewed on LarpFic via your history, and much more."
+        part3: "There's lots of information and advice on how to use LarpFic in our %{faq_link}. You'll find the latest news about site developments in our %{admin_posts_link}. If you need more help, run into a bug, or have questions or comments, please %{contact_support_link}, who are always happy to help out."
     invitation:
       subject: "[%{app_name}] Invitation"
       greeting: "Hello from the %{app_name}!"
       has_invited: "%{user_name} has invited you to join our beta!"
       been_invited: "You've been invited to join our beta!"
-      part1: "The Archive of Our Own (AO3) is a free, noncommercial archive built by and for fans. We are multifannish and welcome all kinds of fanworks, including fanfiction, fanart, fanvids, and podfic. We run on the open-source otwarchive software, and our servers are owned by the nonprofit Organization for Transformative Works, which works to protect fan rights and preserve fanworks."
+      part1: "LarpFic (LF) is a free, noncommercial archive built by and for fans. We are multifannish and welcome all kinds of fanworks, including fanfiction, fanart, fanvids, and podfic. We run on the open-source otwarchive software, and our servers are owned by the nonprofit Organization for Transformative Works, which works to protect fan rights and preserve fanworks."
       part2: "Also, we have a lot of spiffy features for finding the fanworks you want, and for posting and sharing your work with others. There are lots more coming soon! Your feedback now during our beta can help us build an even better archive. \\o/"
       text:
         faq_link: "For more information, please check out our FAQ at %{faq_link}."
@@ -314,11 +314,11 @@ en:
       due: "This assignment is due at:"
       any: "Any"
       text:
-        part1: "You have been assigned the following request in the %{collection_title} (%{collection_url}) challenge at the Archive of Our Own!"
+        part1: "You have been assigned the following request in the %{collection_title} (%{collection_url}) challenge at LarpFic!"
         look_up: "You can look up this assignment from your Assignments page at %{link}."
         footer: "You're receiving this email because you signed up for the %{title} challenge (%{url}). For more information about this challenge and contact information for the moderators, please visit %{profile_url}."
       html:
-        part1: "You have been assigned the following request in the %{link} challenge at the Archive of Our Own!"
+        part1: "You have been assigned the following request in the %{link} challenge at LarpFic!"
         look_up: "You can look up this assignment from %{link}."
         look_up_link: "your Assignments page"
         footer: "You're receiving this email because you signed up for the %{title} challenge. For more information about this challenge and contact information for the moderators, please visit %{footer_link}."
@@ -329,18 +329,18 @@ en:
       greeting: "Hello from the %{app_name}!"
 
       part6: "The works uploaded include:"
-      part8: "To preserve rec lists and bookmarks, the imported archive's web addresses may redirect to the imported copy of these works for a limited time (check the announcement post for your archive to be sure). If you've already uploaded a copy of these works and you did NOT use the import from URL feature, there will be two copies of the same work on the archive."
+      part8: "To preserve rec lists and bookmarks, the imported archive's web addresses may redirect to the imported copy of these works for a limited time (check the announcement post for your archive to be sure). If you've already uploaded a copy of these works and you did NOT use the import from URL feature, there will be two copies of the same work on LarpFic."
       part12: "If you're contacting us, please whitelist email addresses from @transformativeworks.org and check your spam folders for our reply."
       text:
         part1: "You're receiving this e-mail because an archive has recently been imported by Open Doors (%{open_doors_link}) into the %{app_name} (%{app_short_name} - %{app_url}), and we believe that the following fanworks belong to you. We'd like to give you a chance to claim (or delete/orphan) these works if you want to. And if you don't already have an account under a different e-mail, we'd like to invite you aboard!"
-        part2: "You can read announcements about recent archive moves at AO3 News (%{news_link}), and find additional information on Open Doors' FAQ page (%{open_doors_faq_link}) or tutorials page (%{open_doors_tutorial_link}). For any questions not answered in the FAQ, tutorials, or this e-mail, please contact Support at %{support_link}."
+        part2: "You can read announcements about recent archive moves at LF News (%{news_link}), and find additional information on Open Doors' FAQ page (%{open_doors_faq_link}) or tutorials page (%{open_doors_tutorial_link}). For any questions not answered in the FAQ, tutorials, or this e-mail, please contact Support at %{support_link}."
         part3: "If this is a mistake and these are not your works, please don't delete them! Please just contact Open Doors (%{open_doors_link}) and we will sort it out."
-        part4: "Depending on the archive, your works may have been imported restricted to registered users only (to keep them out of Google searches). If this is the case, the works will only be accessible by logged-in users unless you choose to make them fully visible. For help unlocking, orphaning, or deleting your works, please contact AO3 Support."
+        part4: "Depending on LarpFic, your works may have been imported restricted to registered users only (to keep them out of Google searches). If this is the case, the works will only be accessible by logged-in users unless you choose to make them fully visible. For help unlocking, orphaning, or deleting your works, please contact LF Support."
         part5: "Claim or remove your works here: %{claim_url}"
-        part7: "If these works do belong to you, but you don't want them, you can orphan (so that they remain on the AO3, but with your name removed) or delete them (so that they are entirely removed from the AO3). You do not need to add these works to any account in order to orphan or delete them--you can do this directly from the claim link above. (For assistance, please contact Support at %{support_link}.)"
-        part9: "If you would like Open Doors to update the redirect to point to your pre-existing work, please delete the imported copy, and contact Open Doors at %{open_doors_link} with your AO3 account name, your account name on the imported archive, and the title and URL of the fanwork you would like the redirect to point to. (If you have multiple works you would like to change the redirects for, you can list these in one email.)"
+        part7: "If these works do belong to you, but you don't want them, you can orphan (so that they remain on the LF, but with your name removed) or delete them (so that they are entirely removed from the LF). You do not need to add these works to any account in order to orphan or delete them--you can do this directly from the claim link above. (For assistance, please contact Support at %{support_link}.)"
+        part9: "If you would like Open Doors to update the redirect to point to your pre-existing work, please delete the imported copy, and contact Open Doors at %{open_doors_link} with your LF account name, your account name on the imported archive, and the title and URL of the fanwork you would like the redirect to point to. (If you have multiple works you would like to change the redirects for, you can list these in one email.)"
         part10: "If you had other works on the imported archive under an e-mail address you can no longer access, please contact Open Doors with any information that can help verify your identity."
-        part11: "For other inquiries, please contact AO3 Support at %{support_link}."
+        part11: "For other inquiries, please contact LF Support at %{support_link}."
         part13: |-
           Best,
           The Open Doors team
@@ -349,16 +349,16 @@ en:
         part1: "You're receiving this e-mail because an archive has recently been imported by %{open_doors_link} into the %{app_link} (%{app_short_name}), and we believe that the following fanworks belong to you. We'd like to give you a chance to claim (or delete/orphan) these works if you want to. And if you don't already have an account under a different e-mail, we'd like to invite you aboard!"
         open_doors: "Open Doors"
         part2: "You can read announcements about recent archive moves at %{news_link}, and find additional information on Open Doors' %{open_doors_faq_link} or %{open_doors_tutorial_link}. For any questions not answered in the FAQ, tutorials, or this e-mail, please %{support_link}."
-        ao3_news: "AO3 News"
+        LF_news: "LF News"
         faq_page: "FAQ page"
         tutorial_page: "tutorial page"
-        contact_support: "contact AO3 support"
+        contact_support: "contact LF support"
         part3: "If this is a mistake and these are not your works, please don't delete them! Please just %{open_doors_link} and we will sort it out."
         contact_open_doors: "contact Open Doors"
-        part4: "Depending on the archive, your works may have been imported restricted to registered users only (to keep them out of Google searches). If this is the case, the works will only be accessible by logged-in users unless you choose to make them fully visible. For help unlocking, orphaning, or deleting your works, please %{support_link}."
+        part4: "Depending on LarpFic, your works may have been imported restricted to registered users only (to keep them out of Google searches). If this is the case, the works will only be accessible by logged-in users unless you choose to make them fully visible. For help unlocking, orphaning, or deleting your works, please %{support_link}."
         part5: "Claim or remove your works here."
-        part7: "If these works do belong to you, but you don't want them, you can orphan (so that they remain on the AO3, but with your name removed) or delete them (so that they are entirely removed from the AO3). You do not need to add these works to any account in order to orphan or delete them--you can do this directly from the claim link above. (For assistance, please %{support_link}.)"
-        part9: "If you would like Open Doors to update the redirect to point to your pre-existing work, please delete the imported copy, and %{open_doors_link} with your AO3 account name, your account name on the imported archive, and the title and URL of the fanwork you would like the redirect to point to. (If you have multiple works you would like to change the redirects for, you can list these in one email.)"
+        part7: "If these works do belong to you, but you don't want them, you can orphan (so that they remain on the LF, but with your name removed) or delete them (so that they are entirely removed from the LF). You do not need to add these works to any account in order to orphan or delete them--you can do this directly from the claim link above. (For assistance, please %{support_link}.)"
+        part9: "If you would like Open Doors to update the redirect to point to your pre-existing work, please delete the imported copy, and %{open_doors_link} with your LF account name, your account name on the imported archive, and the title and URL of the fanwork you would like the redirect to point to. (If you have multiple works you would like to change the redirects for, you can list these in one email.)"
         part10: "If you had other works on the imported archive under an e-mail address you can no longer access, please %{open_doors_link} with any information that can help verify your identity."
         part11: "For other inquiries, please %{support_link}."
         part13: "Best,"
@@ -375,7 +375,7 @@ en:
 
   validators:
     email:
-      blacklist: "has been blocked at the owner's request. That means it can't be used in guest comments. Please check the address to make sure it's yours to use and contact AO3 Support if you have any questions."
+      blacklist: "has been blocked at the owner's request. That means it can't be used in guest comments. Please check the address to make sure it's yours to use and contact LF Support if you have any questions."
       veracity:
         allow_blank: "does not seem to be a valid address. Please use a different address or leave blank."
         no_blank: "does not seem to be a valid address."

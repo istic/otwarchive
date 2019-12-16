@@ -2,7 +2,7 @@
   <h3 class="heading"><%= ts('Sorry!') %></h3>
   <p>
     <%= ts('This work is only available to registered users of the Archive.') %>
-    <%= ts('If you already have an Archive of Our Own account, log in now.') %>
+    <%= ts('If you already have a LarpFic account, log in now.') %>
     <% if @admin_settings.account_creation_enabled? %>
       <%= link_to ts("Or join us for free - it's easy."), signup_path %>
     <% end %>
@@ -11,7 +11,7 @@
   <h3 class="heading"><%= ts('Sorry!') %></h3>
   <p>
     <%= ts('Commenting on this work is only available to registered users of the Archive.') %>
-    <%= ts('If you already have an Archive of Our Own account, log in now.') %>
+    <%= ts('If you already have a LarpFic account, log in now.') %>
     <% if @admin_settings.account_creation_enabled? %>
       <%= link_to ts("Or join us for free - it's easy."), signup_path %>
     <% end %>
