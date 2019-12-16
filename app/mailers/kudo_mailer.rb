@@ -3,7 +3,7 @@ class KudoMailer < ActionMailer::Base
 
   layout 'mailer'
   helper :mailer
-  default from: "Archive of Our Own " + "<#{ArchiveConfig.RETURN_ADDRESS}>"
+  default from: "LarpFic " + "<#{ArchiveConfig.RETURN_ADDRESS}>"
 
   # send a batched-up notification
   # user_kudos is a hash of arrays converted to JSON string format

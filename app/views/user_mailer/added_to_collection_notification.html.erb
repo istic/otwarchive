@@ -5,14 +5,14 @@
     added your work (<%= style_link(@work.title.html_safe, work_url(@work)) %>) to their collection!</p>
 
   <p>You are receiving this notification because you have previously elected to allow
-  automatic inclusion of your works into collections on the Archive of Our Own.</p>
+  automatic inclusion of your works into collections on LarpFic.</p>
 
   <p>If you would like to remove your work from this collection, please visit your
    <%= style_link("Approved Collection Items page", user_collection_items_url(@user) + "?approved=true") %>.</p>
 
   <p>If in future you would prefer to individually accept or reject requests to add your
     works to collections, please edit your <%= style_link("Preferences", "#{root_url}users/#{@user.default_pseud.name}/preferences") %>
-    and untick the box next to: <%= style_quote("\"Automatically agree to your work being collected by others in the Archive.\"") %>
+    and untick the box next to: <%= style_quote("\"Automatically agree to your work being collected by others in LarpFic.\"") %>
   </p>
 
   <p>Thanks!</p>
