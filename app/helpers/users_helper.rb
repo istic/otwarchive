@@ -15,16 +15,6 @@ module UsersHelper
     current_user.is_a?(User) ? current_user.maintained_collections.present? : false
   end
 
-  # print all works that belong to a given pseud
-  def print_works(pseud)
-    result = ''
-    conditions = logged_in? ? 'posted = 1' : 'posted = 1 AND restricted = 0 OR restricted IS NULL'
-    pseud.works.find(:all, order: 'works.revised_at DESC', conditions: conditions).each do |work|
-      result += (render partial: 'works/work_blurb', locals: { work: work })
-    end
-    result
-  end
-
   def sidebar_pseud_link_text(user, pseud)
     text = if current_page?(user)
              ts('Pseuds')
@@ -140,25 +130,6 @@ module UsersHelper
     items.html_safe
   end
 
-  def authors_header(collection, what = 'People')
-    if collection.total_pages < 2
-      case collection.size
-      when 0
-        "0 #{what}"
-      when 1
-        "1 #{what.singularize}"
-      else
-        collection.total_entries.to_s + " #{what}"
-      end
-    else
-      %( %d - %d of %d ) %[
-        collection.offset + 1,
-        collection.offset + collection.length,
-        collection.total_entries
-      ] + what
-    end
-  end
-
   def log_item_action_name(action)
     if action == ArchiveConfig.ACTION_ACTIVATE
       t('users_helper.log_validated', default: 'Account Validated')
@@ -182,6 +153,8 @@ module UsersHelper
       t('users_helper.log_email_change', default: 'Email Changed')
     elsif action == ArchiveConfig.ACTION_TROUBLESHOOT
       t('users_helper.log_troubleshot', default: 'Account Troubleshot')
+    elsif action == ArchiveConfig.ACTION_NOTE
+      t('users_helper.log_note', default: 'Note Added')
     end
   end
 

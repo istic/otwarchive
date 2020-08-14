@@ -4,20 +4,22 @@ class WorksController < ApplicationController
   # only registered users and NOT admin should be able to create new works
   before_action :load_collection
   before_action :load_owner, only: [:index]
-  before_action :users_only, except: [:index, :show, :navigate, :search, :collected, :edit_tags, :update_tags, :reindex, :drafts]
-  before_action :check_user_status, except: [:index, :show, :navigate, :search, :collected, :reindex]
+  before_action :users_only, except: [:index, :show, :navigate, :search, :collected, :edit_tags, :update_tags, :drafts, :share]
+  before_action :check_user_status, except: [:index, :show, :navigate, :search, :collected, :share]
   before_action :load_work, except: [:new, :create, :import, :index, :show_multiple, :edit_multiple, :update_multiple, :delete_multiple, :search, :drafts, :collected]
   # this only works to check ownership of a SINGLE item and only if load_work has happened beforehand
-  before_action :check_ownership, except: [:index, :show, :navigate, :new, :create, :import, :show_multiple, :edit_multiple, :edit_tags, :update_tags, :update_multiple, :delete_multiple, :search, :mark_for_later, :mark_as_read, :drafts, :collected, :reindex]
+  before_action :check_ownership, except: [:index, :show, :navigate, :new, :create, :import, :show_multiple, :edit_multiple, :edit_tags, :update_tags, :update_multiple, :delete_multiple, :search, :mark_for_later, :mark_as_read, :drafts, :collected, :share]
   # admins should have the ability to edit tags (:edit_tags, :update_tags) as per our ToS
   before_action :check_ownership_or_admin, only: [:edit_tags, :update_tags]
   before_action :log_admin_activity, only: [:update_tags]
-  before_action :check_visibility, only: [:show, :navigate]
+  before_action :check_visibility, only: [:show, :navigate, :share]
 
   before_action :load_first_chapter, only: [:show, :edit, :update, :preview]
 
   cache_sweeper :collection_sweeper
   cache_sweeper :feed_sweeper
+
+  skip_before_action :store_location, only: [:share]
 
   # we want to extract the countable params from work_search and move them into their fields
   def clean_work_search_params
@@ -192,7 +194,7 @@ class WorksController < ApplicationController
 
     # Users must explicitly okay viewing of adult content
     if params[:view_adult]
-      session[:adult] = true
+      cookies[:view_adult] = "true"
     elsif @work.adult? && !see_adult?
       render('_adult', layout: 'application') && return
     end
@@ -206,12 +208,12 @@ class WorksController < ApplicationController
         )
       else
         flash.keep
-        redirect_to([@work, @chapter]) && return
+        redirect_to([@work, @chapter, { only_path: true }]) && return
       end
     end
 
     @tag_categories_limited = Tag::VISIBLE - ['ArchiveWarning']
-    @kudos = @work.kudos.with_pseud.includes(pseud: :user).order('created_at DESC')
+    @kudos = @work.kudos.with_user.includes(:user).by_date
 
     if current_user.respond_to?(:subscriptions)
       @subscription = current_user.subscriptions.where(subscribable_id: @work.id,
@@ -220,8 +222,27 @@ class WorksController < ApplicationController
     end
 
     render :show
-    @work.increment_hit_count(request.remote_ip)
     Reading.update_or_create(@work, current_user) if current_user
+  end
+
+  # GET /works/1/share
+  def share
+    if request.xhr?
+      if @work.unrevealed?
+        render template: "errors/404", status: :not_found
+      else
+        render layout: false
+      end
+    else
+      # Avoid getting an unstyled page if JavaScript is disabled
+      flash[:error] = ts("Sorry, you need to have JavaScript enabled for this.")
+      if request.env["HTTP_REFERER"]
+        redirect_to(request.env["HTTP_REFERER"] || root_path)
+      else
+        # else branch needed to deal with bots, which don't have a referer
+        redirect_to root_path
+      end
+    end
   end
 
   def navigate
@@ -380,7 +401,7 @@ class WorksController < ApplicationController
           flash[:notice] << ts(" It should appear in work listings within the next few minutes.")
         end
         in_moderated_collection
-        redirect_to(@work)
+        redirect_to work_path(@work)
       else
         @chapter.errors.full_messages.each { |err| @work.errors.add(:base, err) }
         render :edit
@@ -485,6 +506,7 @@ class WorksController < ApplicationController
     end
 
     options = build_options(params)
+    options[:ip_address] = request.remote_ip
 
     # now let's do the import
     if params[:import_multiple] == 'works' && @urls.length > 1
@@ -702,17 +724,6 @@ class WorksController < ApplicationController
     end
 
     redirect_to show_multiple_user_works_path(@user, work_ids: @works.map(&:id))
-  end
-
-  # Reindex the work.
-  def reindex
-    if logged_in_as_admin? || permit?('tag_wrangler')
-      RedisSearchIndexQueue.queue_works([params[:id]], priority: :high)
-      flash[:notice] = ts('Work queued to be reindexed')
-    else
-      flash[:error] = ts("Sorry, you don't have permission to perform this action.")
-    end
-    redirect_to(request.env['HTTP_REFERER'] || root_path)
   end
 
   # marks a work to read later
