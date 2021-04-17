@@ -249,7 +249,7 @@ namespace :After do
 #  task(:invite_external_authors => :environment) do
 #    Invitation.where("sent_at is NULL").where("external_author_id IS NOT NULL").each do |invite|
 #      archivist = invite.external_author.external_creatorships.collect(&:archivist).collect(&:login).uniq.join(", ")
-#      UserMailer.invitation_to_claim(invite, archivist).deliver
+#      UserMailer.invitation_to_claim(invite, archivist).deliver_now
 #      invite.sent_at = Time.now
 #      invite.save
 #    end
@@ -694,7 +694,49 @@ namespace :After do
       REDIS_GENERAL.del(key)
     end
   end
-end # this is the end that you have to put new tasks above
+
+  desc "Copy anon_commenting_disabled to comment_permissions."
+  task(copy_anon_commenting_disabled_to_comment_permissions: :environment) do
+    Work.in_batches do |batch|
+      batch.update_all("comment_permissions = anon_commenting_disabled")
+      print(".") && STDOUT.flush
+    end
+
+    puts && STDOUT.flush
+  end
+
+  desc "Replace Archive-hosted Dewplayer embeds with HTML5 audio tags"
+  task(replace_dewplayer_embeds: :environment) do
+    dewplayer_embed_regex = /<embed .*dewplayer/
+    updated_chapter_count = 0
+    skipped_chapters = []
+
+    Chapter.find_each do |chapter|
+      puts(chapter.id) && STDOUT.flush if (chapter.id % 1000).zero?
+      if chapter.content.match(dewplayer_embed_regex)
+        begin
+          chapter.content_sanitizer_version = -1
+          if chapter.sanitize_field(chapter, :content).match(dewplayer_embed_regex)
+            # The embed(s) are still there.
+            skipped_chapters << chapter.id
+          else
+            updated_chapter_count += 1
+          end
+        rescue StandardError
+          skipped_chapters << chapter.id
+        end
+      end
+    end
+
+    if skipped_chapters.any?
+      puts("Couldn't convert #{skipped_chapters.size} chapter(s): #{skipped_chapters.join(',')}")
+      STDOUT.flush
+    end
+    puts("Converted #{updated_chapter_count} chapter(s).") && STDOUT.flush
+  end
+
+  # This is the end that you have to put new tasks above.
+end
 
 ##################
 # ADD NEW MIGRATE TASKS TO THIS LIST ONCE THEY ARE WORKING

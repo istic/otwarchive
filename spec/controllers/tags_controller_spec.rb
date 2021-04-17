@@ -4,10 +4,7 @@ describe TagsController do
   include LoginMacros
   include RedirectExpectationHelper
 
-  before do
-    fake_login
-    @current_user.roles << Role.new(name: 'tag_wrangler')
-  end
+  before { fake_login_known_user(create(:tag_wrangler)) }
 
   describe "wrangle" do
     context "when showing unwrangled freeforms for a fandom" do
@@ -156,6 +153,24 @@ describe TagsController do
       @tag = FactoryBot.create(:banned, canonical: false)
       get :feed, params: { id: @tag.id, format: :atom }
       it_redirects_to(tag_works_path(tag_id: @tag.name))
+    end
+  end
+
+  describe "show_hidden" do
+    let(:work) { create(:work, posted: true) }
+
+    it "redirects to referer with an error for non-ajax warnings requests" do
+      referer = tags_path
+      request.headers["HTTP_REFERER"] = referer
+      get :show_hidden, params: { creation_type: "Work", tag_type: "warnings", creation_id: work.id }
+      it_redirects_to_with_error(referer, "Sorry, you need to have JavaScript enabled for this.")
+    end
+
+    it "redirects to referer with an error for non-ajax freeforms requests" do
+      referer = tags_path
+      request.headers["HTTP_REFERER"] = referer
+      get :show_hidden, params: { creation_type: "Work", tag_type: "freeforms", creation_id: work.id }
+      it_redirects_to_with_error(referer, "Sorry, you need to have JavaScript enabled for this.")
     end
   end
 
